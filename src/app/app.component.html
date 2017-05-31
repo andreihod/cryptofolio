@@ -1,6 +1,65 @@
-<h4>
+<h1>
+  <img src="assets/images/assts.png" alt="Assts"/>
   {{title}}
-</h4>
+</h1>
 <p>
   {{description}}
 </p>
+
+
+  <div class="row">
+    <div class="three columns">
+      <label for="assetInput">Asset</label>
+      <select class="u-full-width" id="assetInput">
+        <option value="Option 1">Bitcoin</option>
+        <option value="Option 2">Ethereum</option>
+        <option value="Option 2">Dogecoin</option>
+      </select>
+    </div>
+    <div class="three columns">
+      <label for="balanceInput">My Balance</label>
+      <input class="u-full-width" type="text" placeholder="0.0001" id="balanceInput">
+    </div>
+    <div class="four columns">
+      <label for="exchangeInput">Exchange</label>
+      <select class="u-full-width" id="exchangeInput">
+        <option value="Option 1">Poloniex - USDT/BTC</option>
+        <option value="Option 2">Poloniex - USDT/ETH</option>
+      </select>
+    </div>
+    <div class="two columns">
+      <label>Add new asset</label>
+      <input class="button-primary" type="submit" value="Submit">
+    </div>
+
+
+<table class="u-full-width">
+  <thead>
+    <tr>
+      <th>Asset</th>
+      <th>My Balance</th>
+      <th>Exchange - Market</th>
+      <th>Price</th>
+      <th>My Balance</th>
+      <th>24hr Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bitcoin</td>
+      <td>BTC 0.002456</td>
+      <td>Poloniex - USDT/BTC</td>
+      <td>$ 1,960.80</td>
+      <td>$ 4.8157248</td>
+      <td>+12%</td>
+    </tr>
+    <tr>
+      <td>Ethereum</td>
+      <td>ETH 0.002456</td>
+      <td>Poloniex - USDT/ETH</td>
+      <td>$ 1,960.80</td>
+      <td>$ 4.8157248</td>
+      <td>+4.8%</td>
+    </tr>
+  </tbody>
+</table>

@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Welcome to Assts!';
+  title = 'Assts';
   description = 'A free and open source digital asset tracker.'
 }
