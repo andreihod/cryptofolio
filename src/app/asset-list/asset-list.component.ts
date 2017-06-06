@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Asset } from '../asset';
+import { AssetService } from '../asset.service';
+
 @Component({
   selector: 'app-asset-list',
   templateUrl: './asset-list.component.html',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssetListComponent implements OnInit {
 
-  constructor() { }
+  assets: Asset[];
+
+  constructor(private assetService: AssetService) { }
 
   ngOnInit() {
+    this.assets = this.assetService.getAssets();
   }
 
 }

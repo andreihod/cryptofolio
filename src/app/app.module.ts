@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AssetListComponent } from './asset-list/asset-list.component';
 import { AssetFormComponent } from './asset-form/asset-form.component';
+import { AssetService } from './asset.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { AssetFormComponent } from './asset-form/asset-form.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [AssetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

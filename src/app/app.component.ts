@@ -9,6 +9,5 @@ export class AppComponent {
 
   title = 'assts';
   description = 'A free and open source digital asset tracker.';
-  //assets = [];
 
 }
