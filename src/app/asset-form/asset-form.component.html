@@ -1,25 +1,22 @@
 <div class="row">
   <div class="three columns">
     <label for="assetInput">Asset</label>
-    <select class="u-full-width" id="assetInput">
-      <option value="Option 1">Bitcoin</option>
-      <option value="Option 2">Ethereum</option>
-      <option value="Option 2">Dogecoin</option>
+    <select [(ngModel)]="formAsset.name" class="u-full-width" id="assetInput">
+      <option *ngFor="let coin of supportedCoins" [ngValue]="coin">{{coin}}</option>
     </select>
   </div>
   <div class="three columns">
     <label for="balanceInput">My Balance</label>
-    <input class="u-full-width" type="text" placeholder="0.0001" id="balanceInput">
+    <input [(ngModel)]="formAsset.mybalance" class="u-full-width" type="text" placeholder="0.0001" id="balanceInput">
   </div>
   <div class="four columns">
     <label for="exchangeInput">Exchange</label>
-    <select class="u-full-width" id="exchangeInput">
-      <option value="Option 1">Poloniex - USDT/BTC</option>
-      <option value="Option 2">Poloniex - USDT/ETH</option>
+    <select [(ngModel)]="formAsset.exchange" class="u-full-width" id="exchangeInput">
+      <option *ngFor="let exchange of supportedExchanges" [ngValue]="exchange">{{exchange.getDisplayName()}}</option>
     </select>
   </div>
   <div class="two columns">
     <label>Add new asset</label>
-    <input class="button-primary" type="submit" value="Submit">
+    <input class="button-primary" (click)="addAsset(formAsset)" type="Button" value="Submit">
   </div>
 </div>

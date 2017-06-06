@@ -13,12 +13,7 @@
     <tr *ngFor="let asset of assets" >
       <td>{{asset.name}}</td>
       <td>{{asset.mybalance}}</td>
-      <td>{{
-            asset.exchange.name + ' - ' +
-            asset.market.currencyFrom + '/' +
-            asset.market.currencyTo
-          }}
-      </td>
+      <td>{{asset.exchange.getDisplayName()}}</td>
       <td>$ 1,960.80</td>
       <td>$ 4.8157248</td>
       <td>+12%</td>

@@ -4,22 +4,16 @@ import { Exchange } from './exchange'
 import { Market } from './market'
 
 export var ASSETS: Asset[] = [
-  {id: 1,
-    name:'Bitcoin',
+  { name:'Bitcoin',
     mybalance: 0.0,
-    exchange: new Exchange("Poloniex"),
-    market: new Market('BTC', 'USDT')
+    exchange: new Exchange("Poloniex", new Market('BTC', 'USDT'))
   },
-  {id: 2,
-    name:'Ethereum',
+  { name:'Ethereum',
     mybalance: 0.0,
-    exchange: new Exchange("Poloniex"),
-    market: new Market("BTC","USDT")
+    exchange: new Exchange("Poloniex", new Market('BTC', 'USDT'))
   },
-  {id: 3,
-    name:'Dogecoin',
+  { name:'Dogecoin',
     mybalance: 0.0,
-    exchange: new Exchange("Poloniex"),
-    market: new Market("BTC","USDT")
+    exchange: new Exchange("Poloniex", new Market('BTC', 'USDT'))
   },
 ];

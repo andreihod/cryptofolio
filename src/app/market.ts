@@ -1,5 +1,5 @@
 export class Market {
 
-  constructor(private currencyFrom: string, private currencyTo: string) { }
+  constructor(public currencyFrom: string, public currencyTo: string) { }
 
 }
