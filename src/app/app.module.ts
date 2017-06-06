@@ -4,10 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { AssetListComponent } from './asset-list/asset-list.component';
+import { AssetFormComponent } from './asset-form/asset-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AssetListComponent,
+    AssetFormComponent
   ],
   imports: [
     BrowserModule,

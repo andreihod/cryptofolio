@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Assts';
-  description = 'A free and open source digital asset tracker.'
+
+  title = 'assts';
+  description = 'A free and open source digital asset tracker.';
+  //assets = [];
+
 }
