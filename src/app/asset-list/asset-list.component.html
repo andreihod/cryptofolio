@@ -7,16 +7,21 @@
       <th>Price</th>
       <th>My Balance</th>
       <th>24hr Change</th>
+      <th>Options</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let asset of assets" >
+    <tr *ngFor="let asset of assets">
       <td>{{asset.name}}</td>
       <td>{{asset.mybalance}}</td>
       <td>{{asset.exchange.getDisplayName()}}</td>
       <td>$ 1,960.80</td>
       <td>$ 4.8157248</td>
       <td>+12%</td>
+      <td>
+        <a class="button button-icon"><i class="fa fa-pencil"></i></a>
+        <a class="button button-icon"><i class="fa fa-remove"></i></a>
+      </td>
     </tr>
   </tbody>
 </table>
