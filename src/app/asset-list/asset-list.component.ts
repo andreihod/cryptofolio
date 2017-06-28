@@ -18,4 +18,8 @@ export class AssetListComponent implements OnInit {
     this.assets = this.assetService.getAssets();
   }
 
+  removeAsset(asset: Asset): void {
+    this.assetService.removeAsset(asset);
+  }
+
 }

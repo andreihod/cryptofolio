@@ -18,4 +18,11 @@ export class AssetService {
     ASSETS.push(asset);
   }
 
+  removeAsset(asset : Asset){
+    let index: number = ASSETS.indexOf(asset);
+    if (index !== -1) {
+        ASSETS.splice(index, 1);
+    }
+  }
+
 }
