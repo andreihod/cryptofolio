@@ -19,7 +19,7 @@
         <span *ngIf="asset!=editingAsset">{{asset.name}}</span>
       </td>
       <td>
-        <input *ngIf="asset==editingAsset" type="text" [(ngModel)]="asset.mybalance" />
+        <input *ngIf="asset==editingAsset" type="text" [(ngModel)]="asset.mybalance" class="u-full-width" />
         <span *ngIf="asset!=editingAsset">{{asset.mybalance}}</span>
       </td>
       <td>
@@ -29,8 +29,8 @@
         </select>
         <span *ngIf="asset!=editingAsset">{{asset.exchange.getDisplayName()}}</span>
       </td>
-      <td>$ {{ asset.exchange.price | number : '1.2'}}</td>
-      <td>$ {{ asset.mybalance * asset.exchange.price | number : '1.2' }} </td>
+      <td>${{ asset.exchange.price | number : '1.2'}}</td>
+      <td>${{ asset.mybalance * asset.exchange.price | number : '1.2' }} </td>
       <td>+12%</td>
       <td class="text-center">
         <a *ngIf="asset!=editingAsset" class="button button-icon" (click)="editAsset(asset)"><i class="fa fa-pencil"></i></a>
