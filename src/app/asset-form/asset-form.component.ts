@@ -11,7 +11,7 @@ import { Market } from '../market';
   selector: 'app-asset-form',
   templateUrl: './asset-form.component.html',
   styleUrls: ['./asset-form.component.css'],
-  providers: [ExchangeService, CoinService]
+  providers: [ExchangeService]
 })
 export class AssetFormComponent implements OnInit {
 
@@ -20,8 +20,8 @@ export class AssetFormComponent implements OnInit {
   private supportedCoins: string[] = [];
 
   constructor(private assetService: AssetService,
-              private exchangeService: ExchangeService,
-              private coinService: CoinService) { }
+    private exchangeService: ExchangeService,
+    private coinService: CoinService) { }
 
   addAsset(asset: Asset): void {
     this.assetService.addAsset(asset);
