@@ -10,8 +10,7 @@ import { Market } from '../market';
 @Component({
   selector: 'app-asset-form',
   templateUrl: './asset-form.component.html',
-  styleUrls: ['./asset-form.component.css'],
-  providers: [ExchangeService]
+  styleUrls: ['./asset-form.component.css']
 })
 export class AssetFormComponent implements OnInit {
 

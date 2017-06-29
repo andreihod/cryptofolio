@@ -9,6 +9,7 @@ import { AssetFormComponent } from './asset-form/asset-form.component';
 import { AssetService } from './asset.service';
 
 import { CoinService } from './coin.service';
+import { ExchangeService } from './exchange.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { CoinService } from './coin.service';
     FormsModule,
     HttpModule
   ],
-  providers: [AssetService, CoinService],
+  providers: [AssetService, CoinService, ExchangeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
