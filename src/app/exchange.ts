@@ -2,7 +2,7 @@ import { Market } from './market'
 
 export class Exchange {
 
-  constructor(public name: string, public market: Market) { }
+  constructor(public id : number, public name: string, public market: Market) { }
 
   getDisplayName(): string {
     return this.name + ' - ' +
