@@ -29,8 +29,8 @@
         </select>
         <span *ngIf="asset!=editingAsset">{{asset.exchange.getDisplayName()}}</span>
       </td>
-      <td>$ 1,960.80</td>
-      <td>$ 4.8157248</td>
+      <td>$ {{ asset.exchange.price | number : '1.2'}}</td>
+      <td>$ {{ asset.mybalance * asset.exchange.price | number : '1.2' }} </td>
       <td>+12%</td>
       <td class="text-center">
         <a *ngIf="asset!=editingAsset" class="button button-icon" (click)="editAsset(asset)"><i class="fa fa-pencil"></i></a>
