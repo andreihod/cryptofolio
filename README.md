@@ -1,2 +1,2 @@
-# assts
-Free and open source digital assets tracker
+# CryptoFolio
+CryptoFolio webapp repository
