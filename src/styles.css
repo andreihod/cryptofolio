@@ -13,3 +13,9 @@
 .editing{
   background-color: Moccasin;
 }
+
+.button-success{
+  color: #fff !important;
+  background-color: #5cb85c !important;
+  border-color: #4cae4c !important;
+}
