@@ -1,10 +1,17 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
   <div class="six columns offset-by-five text-center">
     <div class="row">
-      <div class="six columns">
-        <label for="username">Email</label>
+      <div class="six columns" *ngIf="creating">
+        <label for="username">Username</label>
         <input class="u-full-width" autofocus="autofocus" type="text" 
-        placeholder="Really, anything!" id="email" [(ngModel)]="user.email" name="email">
+        placeholder="Your username, sir" id="username" [(ngModel)]="user.username" name="username">
+      </div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        <label for="email">Email</label>
+        <input class="u-full-width" type="text" 
+        placeholder="Wow, such communication!" id="email" [(ngModel)]="user.email" name="email">
       </div>
     </div>
     <div class="row">

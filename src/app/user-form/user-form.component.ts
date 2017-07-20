@@ -19,14 +19,11 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmit(form){
-    this.user.username = this.user.email;
-    
-    if(this.creating){
-      if(this.user.password === this.repeatPassword){
+    if(this.creating && this.user.password === this.repeatPassword){
         this.userService.signup(this.user).subscribe(
-          value => console.log(value)
+          value => 
+            console.log('executou at')
         )
-      }
     }
   }
 
