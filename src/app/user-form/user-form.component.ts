@@ -9,26 +9,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFormComponent implements OnInit {
 
-  user : User = new User();
-  repeatPassword : string;
+  user: User = new User();
+  repeatPassword: string;
   creating: boolean = false;
 
-  constructor(private userService : UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
 
-  onSubmit(form){
-    if(this.creating && this.user.password === this.repeatPassword){
-        this.userService.signup(this.user).subscribe(
-          value => 
-            console.log('executou at')
-        )
+  onSubmit(form) {
+    if (this.creating) {
+      if (this.user.password !== this.repeatPassword) {
+
+      }
+
+      this.userService.signup(this.user).subscribe(
+        result => console.log(result)
+      );
+
+    } else {
+      this.userService.login(this.user).subscribe(
+        result => console.log(result),
+        error => console.log(error)
+      )
     }
   }
 
-  create(){
+  create() {
     this.creating = !this.creating;
+  }
+  
+  getMe(){
+    this.userService.get().subscribe(
+      result => console.log(result)
+    )
   }
 
 }
