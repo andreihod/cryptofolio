@@ -1,3 +1,4 @@
+import { AuthenticationService } from './authentication.service';
 import { UserService } from './user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -25,7 +26,7 @@ import { UserFormComponent } from './user-form/user-form.component';
     FormsModule,
     HttpModule
   ],
-  providers: [AssetService, CoinService, ExchangeService, UserService],
+  providers: [AssetService, CoinService, ExchangeService, UserService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
