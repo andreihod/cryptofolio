@@ -1,11 +1,13 @@
 <h1>
-  <img src="assets/images/assts.png" alt="assts"/>
-  {{title}}
+  <img src="assets/images/assts.png" alt="assts" /> {{title}}
 </h1>
 <p>
   {{description}}
 </p>
+<app-user-form></app-user-form>
 
-<app-asset-form></app-asset-form>
+<div *ngIf="logged">
+  <app-asset-form></app-asset-form>
 
-<app-asset-list ></app-asset-list>
+  <app-asset-list></app-asset-list>
+</div>
