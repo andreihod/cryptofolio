@@ -18,7 +18,7 @@ export class UserLoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(form) {
+  login(form) {
     let usernameEmail = (this.user.username) ? this.user.username : this.user.email;
     this.authenticationService.login(usernameEmail, this.user.password).subscribe(
       result => console.log(result)
