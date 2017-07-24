@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="six columns"  *ngIf="creating">
+      <div class="six columns">
         <label for="email">Email</label>
         <input class="u-full-width" type="email" 
         required
@@ -24,27 +24,24 @@
         placeholder="Ooohhh, very mysterious..." id="password" [(ngModel)]="user.password" name="password">
       </div>
     </div>
-    <div class="row" *ngIf="creating">
+    <div class="row">
       <div class="six columns">
         <label for="repeat-password">Password again</label>
         <input class="u-full-width" type="password" 
         minlength="5" pattern=".{3,}" required 
-        placeholder="yeah, I know that it's boring, sorry..." id="repeat-password" [(ngModel)]="repeatPassword"
+        placeholder="yeah, again, sorry" id="repeat-password" [(ngModel)]="repeatPassword"
         name="repeatPassword">
       </div>
     </div>
     <div class="row">
       <div class="six columns">
-        <input class="button-success" type="submit" [value]="creating ? 'Create' : 'Login'">
+        <input class="button-success" type="submit" value="Sign Up">
       </div>
     </div>
     <div class="row">
       <div class="six columns">
-        <input class="button-default" type="button" [value]="creating ? 'Login' : 'Create new user'" (click)="create()">
+        <button class="button-default" routerLink="/login">Login</button>
       </div>
     </div>
   </div>
 </form>
-
-<button (click)="getMe()" >GetMe</button>
-<button (click)="logout()" class="button-danger" >Logout</button>

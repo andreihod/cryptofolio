@@ -1,0 +1,45 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" ngNativeValidate>
+  <div class="six columns offset-by-five text-center">
+    <div class="row">
+      <div class="six columns">
+        <label for="username">Username</label>
+        <input class="u-full-width" autofocus="autofocus" type="text" required placeholder="Your username, sir" id="username" [(ngModel)]="user.username"
+          name="username">
+      </div>
+    </div>
+    <div class="row">
+      <div class="six columns" *ngIf="creating">
+        <label for="email">Email</label>
+        <input class="u-full-width" type="email" required placeholder="Wow, such communication!" id="email" [(ngModel)]="user.email"
+          name="email">
+      </div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        <label for="password">Password</label>
+        <input class="u-full-width" type="password" minlength="5" pattern=".{3,}" required placeholder="Ooohhh, very mysterious..."
+          id="password" [(ngModel)]="user.password" name="password">
+      </div>
+    </div>
+    <div class="row" *ngIf="creating">
+      <div class="six columns">
+        <label for="repeat-password">Password again</label>
+        <input class="u-full-width" type="password" minlength="5" pattern=".{3,}" required placeholder="yeah, again, sorry" id="repeat-password"
+          [(ngModel)]="repeatPassword" name="repeatPassword">
+      </div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        <input class="button-success" type="submit" [value]="creating ? 'Create' : 'Login'">
+      </div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        <button class="button-default" routerLink="/signup">Sign up!</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<button (click)="getMe()">GetMe</button>
+<button (click)="logout()" class="button-danger">Logout</button>

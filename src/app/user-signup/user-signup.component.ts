@@ -4,11 +4,11 @@ import { User } from './../user';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.css']
+  selector: 'app-user-signup',
+  templateUrl: './user-signup.component.html',
+  styleUrls: ['./user-signup.component.css']
 })
-export class UserFormComponent implements OnInit {
+export class UserSignupComponent implements OnInit {
 
   user: User = new User();
   repeatPassword: string;
@@ -43,6 +43,14 @@ export class UserFormComponent implements OnInit {
     }
   }
 
+  login() {
+
+  }
+
+  signup() {
+
+  }
+
   create() {
     this.creating = !this.creating;
   }
@@ -53,7 +61,7 @@ export class UserFormComponent implements OnInit {
     )
   }
 
-  logout(){
+  logout() {
     this.authenticationService.logout();
   }
 
