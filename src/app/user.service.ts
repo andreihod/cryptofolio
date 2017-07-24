@@ -2,6 +2,7 @@ import { AuthenticationService } from './authentication.service';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { User } from './user';
+import { environment } from '../environments/environment';
 
 import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
@@ -9,13 +10,10 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 @Injectable()
 export class UserService {
 
-  //FORGIVE ME OH ALMIGHTY GOD FOR THIS. IT'S JUST A TEST, I PROMISE
-  baseUrl = "https://getcryptofolio.com/";
-
   constructor(private http: Http, private authenticationService : AuthenticationService) { }
 
   signup(user: User): Observable<User> {
-    return this.http.post(`${this.baseUrl}api/auth/signup`,
+    return this.http.post(`${environment.API_URL}/auth/signup`,
       JSON.stringify({ user })
       , { headers: this.getHeaders() })
       .map(res => { return res.json() })
@@ -25,13 +23,13 @@ export class UserService {
   
 
   update(user: User) {
-    return this.http.put(`${this.baseUrl}api/users/me`,
+    return this.http.put(`${environment.API_URL}/users/me`,
       JSON.stringify({ user })
       , { headers: this.getHeaders() });
   }
 
   get() {
-    return this.http.get(`${this.baseUrl}api/users/me`
+    return this.http.get(`${environment.API_URL}/users/me`
       , { headers: this.getHeaders() });
   }
 

@@ -3,12 +3,11 @@ import { Observable } from 'rxjs';
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
 
-  //FORGIVE ME OH ALMIGHTY GOD FOR THIS. IT'S JUST A TEST, I PROMISE
-  baseUrl = "https://getcryptofolio.com/";
   public jwt: string;
 
   constructor(private http: Http) {
@@ -16,7 +15,7 @@ export class AuthenticationService {
   }
 
   login(usernameEmail: string, password: string): Observable<boolean> {
-    return this.http.post(`${this.baseUrl}api/auth/login`,
+    return this.http.post(`${environment.API_URL}/auth/login`,
       JSON.stringify({
         user: {
           username_or_email: usernameEmail,
