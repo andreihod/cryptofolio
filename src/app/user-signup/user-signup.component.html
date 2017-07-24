@@ -1,7 +1,6 @@
 <form #f="ngForm" (ngSubmit)="signup(f)" ngNativeValidate >
-  <div class="six columns offset-by-five text-center">
     <div class="row">
-      <div class="six columns">
+      <div class="four columns offset-by-four">
         <label for="username">Username</label>
         <input class="u-full-width" autofocus="autofocus" type="text" 
         required
@@ -9,7 +8,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="six columns">
+      <div class="four columns offset-by-four">
         <label for="email">Email</label>
         <input class="u-full-width" type="email" 
         required
@@ -17,7 +16,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="six columns">
+      <div class="four columns offset-by-four">
         <label for="password">Password</label>
         <input class="u-full-width" type="password" 
         minlength="5" pattern=".{3,}" required
@@ -25,7 +24,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="six columns">
+      <div class="four columns offset-by-four">
         <label for="repeat-password">Password again</label>
         <input class="u-full-width" type="password" 
         minlength="5" pattern=".{3,}" required 
@@ -34,14 +33,13 @@
       </div>
     </div>
     <div class="row">
-      <div class="six columns">
+      <div class="four columns offset-by-four">
         <input class="button-success" type="submit" value="Sign Up">
       </div>
     </div>
     <div class="row">
-      <div class="six columns">
+      <div class="four columns offset-by-four">
         <button class="button-default" routerLink="/login">Login</button>
       </div>
     </div>
-  </div>
 </form>
