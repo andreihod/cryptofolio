@@ -10,20 +10,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  myUsername: string;
   title = 'assts';
   description = 'A free and open source digital asset tracker.';
 
   constructor(private userService: UserService, private authenticationService: AuthenticationService) { }
 
-
   getMe() {
     this.userService.get().subscribe(
-      result => console.log(result)
+      result => this.myUsername = result.json().user.username
     )
   }
 
   logout() {
     this.authenticationService.logout();
+    this.myUsername = null;
   }
 
 }

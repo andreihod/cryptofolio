@@ -10,8 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLoginComponent implements OnInit {
   user: User = new User();
-  repeatPassword: string;
-  creating: boolean = false;
+  error : string;
 
   constructor(private userService: UserService, private authenticationService: AuthenticationService) { }
 
@@ -19,9 +18,12 @@ export class UserLoginComponent implements OnInit {
   }
 
   login(form) {
+    this.error = null;
+
     let usernameEmail = (this.user.username) ? this.user.username : this.user.email;
     this.authenticationService.login(usernameEmail, this.user.password).subscribe(
-      result => console.log(result)
+      result => '',
+      error => this.error = error
     )
   }
 

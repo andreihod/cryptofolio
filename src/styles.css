@@ -10,6 +10,10 @@
 .text-center{
   text-align: center;
 }
+
+.text-error{
+  color: #ac2925;
+}
 .editing{
   background-color: Moccasin;
 }
