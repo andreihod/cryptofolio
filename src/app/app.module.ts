@@ -12,19 +12,22 @@ import { AssetService } from './asset.service';
 
 import { CoinService } from './coin.service';
 import { ExchangeService } from './exchange.service';
-import { UserFormComponent } from './user-form/user-form.component';
-
+import { routing } from './app.routing';
+import { UserSignupComponent } from './user-signup/user-signup.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 @NgModule({
   declarations: [
     AppComponent,
     AssetListComponent,
     AssetFormComponent,
-    UserFormComponent
+    UserSignupComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [AssetService, CoinService, ExchangeService, UserService, AuthenticationService],
   bootstrap: [AppComponent]
