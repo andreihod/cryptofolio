@@ -14,9 +14,9 @@ import { Market } from '../market';
 })
 export class AssetFormComponent implements OnInit {
 
-  private formAsset: Asset;
-  private supportedExchanges: Exchange[] = [];
-  private supportedCoins: string[] = [];
+  public formAsset: Asset;
+  public supportedExchanges: Exchange[] = [];
+  public supportedCoins: string[] = [];
 
   constructor(private assetService: AssetService,
     private exchangeService: ExchangeService,

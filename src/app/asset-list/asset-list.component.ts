@@ -14,8 +14,8 @@ import { Exchange } from '../exchange';
 })
 export class AssetListComponent implements OnInit {
 
-  private assets: Asset[];
-  private editingAsset: Asset;
+  public assets: Asset[];
+  public editingAsset: Asset;
   private supportedCoins: string[] = [];
   private supportedExchanges: Exchange[] = [];
 
