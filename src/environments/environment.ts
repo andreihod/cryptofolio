@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://getcryptofolio.com/api'
+  API_URL: 'https://getcryptofolio.com/api/v1'
 };
