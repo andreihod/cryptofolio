@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: Http, private authenticationService : AuthenticationService) { }
 
   signup(user: User): Observable<User> {
-    return this.http.post(`${environment.API_URL}/auth/signup`,
+    return this.http.post(`${environment.apiUrl}/auth/signup`,
       JSON.stringify({ user })
       , { headers: this.getHeaders() })
       .map(res => { return res.json() })
@@ -23,13 +23,13 @@ export class UserService {
   
 
   update(user: User) {
-    return this.http.put(`${environment.API_URL}/users/me`,
+    return this.http.put(`${environment.apiUrl}/users/me`,
       JSON.stringify({ user })
       , { headers: this.getHeaders() });
   }
 
   get() {
-    return this.http.get(`${environment.API_URL}/users/me`
+    return this.http.get(`${environment.apiUrl}/users/me`
       , { headers: this.getHeaders() });
   }
 

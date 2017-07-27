@@ -15,7 +15,7 @@ export class AuthenticationService {
   }
 
   login(usernameEmail: string, password: string): Observable<boolean> {
-    return this.http.post(`${environment.API_URL}/auth/login`,
+    return this.http.post(`${environment.apiUrl}/auth/login`,
       JSON.stringify({
         user: {
           username_or_email: usernameEmail,
