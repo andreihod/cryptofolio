@@ -24,13 +24,13 @@ export class AssetListComponent implements OnInit {
     private exchangeService: ExchangeService) { }
 
   ngOnInit() {
-    this.assets = this.assetService.getAssets();
+   // this.assets = this.assetService.getAssets();
     this.supportedCoins = this.coinService.getSupportedCoins();
     this.supportedExchanges = this.exchangeService.getSupportedExchanges();
   }
 
   removeAsset(asset: Asset): void {
-    this.assetService.removeAsset(asset);
+   // this.assetService.removeAsset(asset);
   }
 
   editAsset(asset: Asset): void {

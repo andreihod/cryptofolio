@@ -1,22 +1,40 @@
+import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Exchange } from './exchange';
 import { Market } from './market';
 
+import { environment } from './../environments/environment';
+
 @Injectable()
-export class ExchangeService{
+export class ExchangeService {
+
+
+  getExchanges() {
+    return this.http.get(`${environment.apiUrl}/exchanges`
+      , { headers: this.getHeaders() });
+  }
+
+
+  getExchage(id: number) {
+    return this.http.get(`${environment.apiUrl}/exchanges/${id}`,
+      { headers: this.getHeaders() }
+    )
+  }
 
   private supportedExchanges: Exchange[] = [];
 
-  constructor() {
-    this.supportedExchanges.push(new Exchange(1, "Poloniex", new Market('BTC', 'USDT'),900));
-    this.supportedExchanges.push(new Exchange(2, "Poloniex", new Market('BTC', 'EUR'), 23));
-    this.supportedExchanges.push(new Exchange(35, "Kraken", new Market('BTX', 'USD'), 21));
-    this.supportedExchanges.push(new Exchange(45, "ZCash", new Market('BTC', 'USDT'), 0.002));
-    this.supportedExchanges.push(new Exchange(59, "Kraken", new Market('BTX', 'EUR'), 260));
+  constructor(private http: Http) {
   }
 
   getSupportedExchanges(): Exchange[] {
     return this.supportedExchanges;
   }
+
+  private getHeaders() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return headers;
+  }
+
 
 }

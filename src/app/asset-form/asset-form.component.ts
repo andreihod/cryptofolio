@@ -23,7 +23,7 @@ export class AssetFormComponent implements OnInit {
     private coinService: CoinService) { }
 
   addAsset(asset: Asset): void {
-    this.assetService.addAsset(asset);
+   //this.assetService.addAsset(asset);
     this.resetForm();
   }
 
