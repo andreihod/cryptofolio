@@ -5,7 +5,7 @@ export class Exchange {
   id: number;
   name: string;
   price: number;
-  market: Market;
+  market: Market = new Market();
 
   getDisplayName(): string {
     return this.name + ' - ' +

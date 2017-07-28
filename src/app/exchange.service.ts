@@ -11,23 +11,20 @@ export class ExchangeService {
 
   getExchanges() {
     return this.http.get(`${environment.apiUrl}/exchanges`
-      , { headers: this.getHeaders() });
+      , { headers: this.getHeaders() })
+      .map(res => {
+        return res.json().data.map((ex) => Object.assign(new Exchange(), ex));
+      });
   }
 
 
   getExchage(id: number) {
     return this.http.get(`${environment.apiUrl}/exchanges/${id}`,
       { headers: this.getHeaders() }
-    )
+    ).map(res => res.json())
   }
-
-  private supportedExchanges: Exchange[] = [];
 
   constructor(private http: Http) {
-  }
-
-  getSupportedExchanges(): Exchange[] {
-    return this.supportedExchanges;
   }
 
   private getHeaders() {

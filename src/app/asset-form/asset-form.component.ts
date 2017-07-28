@@ -14,25 +14,27 @@ import { Market } from '../market';
 })
 export class AssetFormComponent implements OnInit {
 
-  public formAsset: Asset;
-  public supportedExchanges: Exchange[] = [];
+  // public formAsset: Asset;
   public supportedCoins: string[] = [];
+  public exchanges: Exchange[];
 
   constructor(private assetService: AssetService,
     private exchangeService: ExchangeService,
     private coinService: CoinService) { }
 
   addAsset(asset: Asset): void {
-   //this.assetService.addAsset(asset);
+    //this.assetService.addAsset(asset);
     this.resetForm();
   }
 
   private resetForm(): void {
-    this.formAsset = new Asset(this.supportedCoins[0], 0.0001, this.supportedExchanges[0]);
+    //this.formAsset = new Asset(this.supportedCoins[0], 0.0001, this.supportedExchanges[0]);
   }
 
   ngOnInit() {
-    this.supportedExchanges = this.exchangeService.getSupportedExchanges();
+    this.exchangeService.getExchanges().subscribe(exchanges => {
+      this.exchanges = exchanges;
+    });
     this.supportedCoins = this.coinService.getSupportedCoins();
     this.resetForm();
   }
