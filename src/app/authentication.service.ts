@@ -9,6 +9,7 @@ import { environment } from '../environments/environment';
 export class AuthenticationService {
 
   public jwt: string;
+  public usuarioAutenticado;
 
   constructor(private http: Http) {
     this.jwt = localStorage.getItem('jwt');
@@ -46,5 +47,9 @@ export class AuthenticationService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return headers;
+  }
+
+  public isUsuarioAutenticado(){
+    return this.usuarioAutenticado;
   }
 }

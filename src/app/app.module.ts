@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './authentication.service';
 import { UserService } from './user.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,7 +30,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
     HttpModule,
     routing
   ],
-  providers: [AssetService, CoinService, ExchangeService, UserService, AuthenticationService],
+  providers: [AssetService, CoinService, ExchangeService, UserService, AuthenticationService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
