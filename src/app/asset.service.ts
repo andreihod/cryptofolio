@@ -5,18 +5,25 @@ import { Asset } from './asset';
 @Injectable()
 export class AssetService {
 
-  assets: Asset[];
+  public assets : Asset[];
 
-  constructor() { }
+  constructor() {
+    this.assets = new Array<Asset>();
+  }
 
+  addAsset(asset: Asset) {
+    this.assets.push(asset);
+  }
+
+  getAssets(): Asset[]{
+    return this.assets;
+  }
   /**
   getAssets(): Asset[]{
     return ASSETS;
   }
 
-  addAsset(asset: Asset) {
-    ASSETS.push(asset);
-  }
+  
 
   removeAsset(asset : Asset){
     let index: number = ASSETS.indexOf(asset);

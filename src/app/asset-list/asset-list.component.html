@@ -13,10 +13,10 @@
   <tbody>
     <tr *ngFor="let asset of assets" [ngClass]="{'editing': asset==editingAsset}">
       <td>
-        <select *ngIf="asset==editingAsset" [(ngModel)]="asset.name">
+        <select *ngIf="asset==editingAsset" [(ngModel)]="asset.coin">
           <option *ngFor="let coin of supportedCoins" [ngValue]="coin" >{{coin}}</option>
         </select>
-        <span *ngIf="asset!=editingAsset">{{asset.name}}</span>
+        <span *ngIf="asset!=editingAsset">{{asset.coin}}</span>
       </td>
       <td>
         <input *ngIf="asset==editingAsset" type="text" [(ngModel)]="asset.mybalance" class="u-full-width" />

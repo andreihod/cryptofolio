@@ -24,10 +24,9 @@ export class AssetListComponent implements OnInit {
     private exchangeService: ExchangeService) { }
 
   ngOnInit() {
-    // this.assets = this.assetService.getAssets();
+    this.assets = this.assetService.getAssets();
     this.supportedCoins = this.coinService.getSupportedCoins();
-    this.exchangeService.getExchanges().subscribe(result => {
-      console.log(result)
+    this.exchangeService.getExchanges().subscribe(result => {[]
       //this.exchanges = result.json()
     });
   }

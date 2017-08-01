@@ -1,18 +1,24 @@
-<div class="row">
-  <div class="three columns">
-    <label for="assetInput">Asset</label>
-  </div>
-  <div class="three columns">
-    <label for="balanceInput">My Balance</label>
-  </div>
-  <div class="four columns">
-    <label for="exchangeInput">Exchange</label>
-    <select class="u-full-width" id="exchangeInput">
+<form #f="ngForm" (ngSubmit)="addAsset()" ngNativeValidate>
+  <div class="row">
+    <div class="three columns">
+      <label for="assetInput">Asset</label>
+      <select [(ngModel)]="asset.coin" name="coin" class="u-full-width" id="assetInput">
+        <option *ngFor="let coin of supportedCoins" [ngValue]="coin" >{{coin}}</option>
+      </select>
+    </div>
+    <div class="three columns">
+      <label for="balanceInput">My Balance</label>
+      <input [(ngModel)]="asset.mybalance" name="mybalance" class="u-full-width" type="text" placeholder="0.0001" id="balanceInput">
+    </div>
+    <div class="four columns">
+      <label for="exchangeInput">Exchange</label>
+      <select [(ngModel)]="asset.exchange" name="exchange" class="u-full-width" id="exchangeInput">
       <option *ngFor="let exchange of exchanges" [ngValue]="exchange">{{exchange.getDisplayName()}}</option>
     </select>
+    </div>
+    <div class="two columns">
+      <label>Add new asset</label>
+      <input class="button-primary" type="Submit" value="Submit">
+    </div>
   </div>
-  <div class="two columns">
-    <label>Add new asset</label>
-    <input class="button-primary" (click)="addAsset(formAsset)" type="Button" value="Submit">
-  </div>
-</div>
+</form>

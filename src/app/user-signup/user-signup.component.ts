@@ -25,7 +25,6 @@ export class UserSignupComponent implements OnInit {
       result => {
         this.authenticationService.login(this.user.username, this.user.password).subscribe(
           rev => {
-            console.log(rev)
           }
         )
       }
