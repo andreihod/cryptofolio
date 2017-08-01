@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './authentication.service';
 import { UserService } from './user.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,13 +16,15 @@ import { ExchangeService } from './exchange.service';
 import { routing } from './app.routing';
 import { UserSignupComponent } from './user-signup/user-signup.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { AssetComponent } from './asset/asset.component';
 @NgModule({
   declarations: [
     AppComponent,
     AssetListComponent,
     AssetFormComponent,
     UserSignupComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    AssetComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
     HttpModule,
     routing
   ],
-  providers: [AssetService, CoinService, ExchangeService, UserService, AuthenticationService],
+  providers: [AssetService, CoinService, ExchangeService, UserService, AuthenticationService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

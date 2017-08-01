@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { User } from './user';
 import { Observable } from 'rxjs';
 import { Http, Headers } from '@angular/http';
@@ -10,7 +11,8 @@ export class AuthenticationService {
 
   public jwt: string;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+  private router : Router) {
     this.jwt = localStorage.getItem('jwt');
   }
 
@@ -28,23 +30,29 @@ export class AuthenticationService {
         if (jwt) {
           this.jwt = jwt;
           localStorage.setItem('jwt', this.jwt);
+          this.router.navigate(['/assets']);
           return true;
         } else {
           return false;
         }
       }).catch((err: any) => {
         return Observable.throw(new Error(err.json().message));
-      });;
+      });
   }
 
   logout(): void {
     this.jwt = null;
     localStorage.removeItem('jwt');
+    this.router.navigate(['/']);
   }
 
   private getHeaders() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return headers;
+  }
+
+  public isUsuarioAutenticado() {
+    return this.jwt !== null;
   }
 }
