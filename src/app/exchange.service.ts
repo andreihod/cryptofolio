@@ -13,7 +13,8 @@ export class ExchangeService {
     return this.http.get(`${environment.apiUrl}/exchanges`
       , { headers: this.getHeaders() })
       .map(res => {
-        return res.json().data.map((ex) => Object.assign(new Exchange(), ex));
+        ;
+        return res.json().map((ex) => Object.assign(new Exchange(), ex.exchange));
       });
   }
 
