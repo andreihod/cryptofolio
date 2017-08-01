@@ -17,7 +17,7 @@ export class AssetListComponent implements OnInit {
   public assets: Asset[];
   public editingAsset: Asset;
   private supportedCoins: string[] = [];
-  public exchanges : Exchange[];
+  public exchanges: Exchange[];
 
   constructor(private assetService: AssetService,
     private coinService: CoinService,
@@ -26,8 +26,8 @@ export class AssetListComponent implements OnInit {
   ngOnInit() {
     this.assets = this.assetService.getAssets();
     this.supportedCoins = this.coinService.getSupportedCoins();
-    this.exchangeService.getExchanges().subscribe(result => {[]
-      //this.exchanges = result.json()
+    this.exchangeService.getExchanges().subscribe(result => {
+      this.exchanges = result      //this.exchanges = result.json()
     });
   }
 

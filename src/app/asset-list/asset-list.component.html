@@ -24,7 +24,7 @@
       </td>
       <td>
         <select [compareWith]="compareExchange" *ngIf="asset==editingAsset" [(ngModel)]="asset.exchange">
-          <option *ngFor="let exchange of supportedExchanges" [ngValue]="exchange" >
+          <option *ngFor="let exchange of exchanges" [ngValue]="exchange" >
           {{exchange.getDisplayName()}}</option>
         </select>
         <span *ngIf="asset!=editingAsset">{{asset.exchange.getDisplayName()}}</span>
