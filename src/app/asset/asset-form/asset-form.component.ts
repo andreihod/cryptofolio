@@ -1,11 +1,10 @@
+import { CoinService } from './../../coin.service';
+import { ExchangeService } from './../../exchange.service';
+import { AssetService } from './../../asset.service';
+import { Exchange } from './../../exchange';
+import { Asset } from './../../asset';
 import { Component, OnInit } from '@angular/core';
 
-import { Asset } from '../asset';
-import { AssetService } from '../asset.service';
-import { ExchangeService } from '../exchange.service';
-import { CoinService } from '../coin.service';
-import { Exchange } from '../exchange';
-import { Market } from '../market';
 
 @Component({
   selector: 'app-asset-form',
@@ -25,22 +24,23 @@ export class AssetFormComponent implements OnInit {
 
   }
 
-  addAsset(): void {
+  addAsset(f): void {
     this.assetService.addAsset(this.asset);
     this.resetForm();
   }
 
   private resetForm(): void {
-    //this.formAsset = new Asset(this.supportedCoins[0], 0.0001, this.supportedExchanges[0]);
-  }
-
-  ngOnInit() {
+    this.asset = new Asset();
     this.exchangeService.getExchanges().subscribe(exchanges => {
       this.exchanges = exchanges;
       this.asset.exchange = this.exchanges[0];
     });
     this.supportedCoins = this.coinService.getSupportedCoins();
     this.asset.coin = this.supportedCoins[0];
+  }
+
+  ngOnInit() {
+
     this.resetForm();
   }
 

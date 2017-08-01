@@ -7,8 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { AssetListComponent } from './asset-list/asset-list.component';
-import { AssetFormComponent } from './asset-form/asset-form.component';
+import { AssetListComponent } from './asset/asset-list/asset-list.component';
+import { AssetFormComponent } from './asset/asset-form/asset-form.component';
 import { AssetService } from './asset.service';
 
 import { CoinService } from './coin.service';

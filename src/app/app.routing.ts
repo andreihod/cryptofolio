@@ -1,6 +1,6 @@
 import { AssetComponent } from './asset/asset.component';
 import { AuthGuard } from './guards/auth.guard';
-import { AssetListComponent } from './asset-list/asset-list.component';
+import { AssetListComponent } from './asset/asset-list/asset-list.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { ModuleWithProviders } from '@angular/core';

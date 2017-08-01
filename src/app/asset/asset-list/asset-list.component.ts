@@ -1,11 +1,9 @@
+import { ExchangeService } from './../../exchange.service';
+import { CoinService } from './../../coin.service';
+import { AssetService } from './../../asset.service';
+import { Exchange } from './../../exchange';
+import { Asset } from './../../asset';
 import { Component, OnInit } from '@angular/core';
-
-import { Asset } from '../asset';
-import { AssetService } from '../asset.service';
-
-import { ExchangeService } from './../exchange.service';
-import { CoinService } from './../coin.service';
-import { Exchange } from '../exchange';
 
 @Component({
   selector: 'app-asset-list',
@@ -35,11 +33,11 @@ export class AssetListComponent implements OnInit {
     // this.assetService.removeAsset(asset);
   }
 
-  editAsset(asset: Asset): void {
-    this.editingAsset = asset;
+  editAsset(myAsset: Asset): void {
+    this.editingAsset = myAsset;
   }
 
-  saveAsset(asset: Asset): void {
+  saveAsset(myAsset: Asset): void {
     this.editingAsset = null;
   }
 
