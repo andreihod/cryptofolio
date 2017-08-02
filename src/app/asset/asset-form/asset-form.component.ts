@@ -14,8 +14,7 @@ import { Component, OnInit } from '@angular/core';
 export class AssetFormComponent implements OnInit {
 
   public asset = new Asset();
-  public coin;
-  public supportedCoins: string[];
+  public coins: string[];
   public exchanges: Exchange[];
 
   constructor(private assetService: AssetService,
@@ -35,8 +34,12 @@ export class AssetFormComponent implements OnInit {
       this.exchanges = exchanges;
       this.asset.exchange = this.exchanges[0];
     });
-    this.supportedCoins = this.coinService.getSupportedCoins();
-    this.asset.coin = this.supportedCoins[0];
+
+    this.coinService.getCoins().subscribe(coins => {
+      this.coins = coins;
+      this.asset.coin = this.coins[0];
+    });
+
   }
 
   ngOnInit() {

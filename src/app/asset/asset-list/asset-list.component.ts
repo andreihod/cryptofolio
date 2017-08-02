@@ -3,6 +3,7 @@ import { CoinService } from './../../coin.service';
 import { AssetService } from './../../asset.service';
 import { Exchange } from './../../exchange';
 import { Asset } from './../../asset';
+import { Coin } from './../../coin';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -14,7 +15,7 @@ export class AssetListComponent implements OnInit {
 
   public assets: Asset[];
   public editingAsset: Asset;
-  private supportedCoins: string[] = [];
+  public coins: Coin[];
   public exchanges: Exchange[];
 
   constructor(private assetService: AssetService,
@@ -23,9 +24,11 @@ export class AssetListComponent implements OnInit {
 
   ngOnInit() {
     this.assets = this.assetService.getAssets();
-    this.supportedCoins = this.coinService.getSupportedCoins();
+    this.coinService.getCoins().subscribe(result => {
+      this.coins = result
+    });
     this.exchangeService.getExchanges().subscribe(result => {
-      this.exchanges = result      //this.exchanges = result.json()
+      this.exchanges = result
     });
   }
 
@@ -43,5 +46,9 @@ export class AssetListComponent implements OnInit {
 
   compareExchange(exchange1: Exchange, exchange2: Exchange) {
     return (exchange1 && exchange2 && exchange1.id == exchange2.id);
+  }
+
+  compareCoin(coin1: Coin, coin2: Coin){
+    return (coin1 && coin2 && coin1.id == coin2.id);
   }
 }

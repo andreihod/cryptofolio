@@ -1,9 +1,9 @@
 <form #f="ngForm" (ngSubmit)="addAsset(f)" ngNativeValidate>
   <div class="row">
     <div class="three columns">
-      <label for="assetInput">Asset</label>
+      <label for="assetInput">Coin</label>
       <select [(ngModel)]="asset.coin" name="coin" class="u-full-width" id="assetInput">
-        <option *ngFor="let coin of supportedCoins" [ngValue]="coin" >{{coin}}</option>
+        <option *ngFor="let coin of coins" [ngValue]="coin" >{{coin.getDisplayName()}}</option>
       </select>
     </div>
     <div class="three columns">
