@@ -13,7 +13,7 @@
   <tbody>
     <tr *ngFor="let asset of assets" [ngClass]="{'editing': asset==editingAsset}">
       <td>
-        <select [compareWith]="compareCoin"  *ngIf="asset==editingAsset" [(ngModel)]="asset.coin">
+        <select [compareWith]="compareCoin" (change)="changeCoin(asset.coin)" *ngIf="asset==editingAsset" [(ngModel)]="asset.coin">
           <option *ngFor="let coin of coins" [ngValue]="coin" >{{coin.name}} - {{coin.symbol}}</option>
         </select>
         <span *ngIf="asset!=editingAsset">{{asset.coin.getDisplayName()}}</span>

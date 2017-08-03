@@ -32,6 +32,13 @@ export class AssetListComponent implements OnInit {
     });
   }
 
+  public changeCoin(coin: Coin){
+      this.exchangeService.getExchangesFromCoin(coin.id).subscribe(exchanges => {
+        this.exchanges = exchanges;
+        this.editingAsset.exchange = exchanges[0];
+      });
+  }
+
   removeAsset(asset: Asset): void {
     this.assetService.removeAsset(asset);
   }
