@@ -18,12 +18,20 @@ export class AssetService {
   getAssets(): Asset[]{
     return this.assets;
   }
+
+  removeAsset(asset : Asset){
+    let index: number = this.assets.indexOf(asset);
+    if (index !== -1) {
+        this.assets.splice(index, 1);
+    }
+  }
+
   /**
   getAssets(): Asset[]{
     return ASSETS;
   }
 
-  
+
 
   removeAsset(asset : Asset){
     let index: number = ASSETS.indexOf(asset);

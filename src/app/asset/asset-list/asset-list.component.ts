@@ -33,7 +33,7 @@ export class AssetListComponent implements OnInit {
   }
 
   removeAsset(asset: Asset): void {
-    // this.assetService.removeAsset(asset);
+    this.assetService.removeAsset(asset);
   }
 
   editAsset(myAsset: Asset): void {
