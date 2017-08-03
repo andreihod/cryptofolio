@@ -43,8 +43,13 @@ export class AssetListComponent implements OnInit {
     this.assetService.removeAsset(asset);
   }
 
+  // TODO: Clean this code
   editAsset(myAsset: Asset): void {
     this.editingAsset = myAsset;
+     this.exchangeService.getExchangesFromCoin(myAsset.coin.id).subscribe(exchanges => {
+        this.exchanges = exchanges;
+      });
+
   }
 
   saveAsset(myAsset: Asset): void {
