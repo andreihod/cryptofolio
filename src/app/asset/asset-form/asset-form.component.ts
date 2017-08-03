@@ -15,6 +15,7 @@ export class AssetFormComponent implements OnInit {
   public asset = new Asset();
   public coins: Coin[];
   public exchanges: Exchange[];
+  public loading = true;
 
   constructor(
     private assetService: AssetService,
@@ -28,6 +29,8 @@ export class AssetFormComponent implements OnInit {
   }
 
   private resetForm(): void {
+    this.loading = true;
+
     this.asset = new Asset();
 
     this.coinService.getCoins().subscribe(coins => {
@@ -38,9 +41,11 @@ export class AssetFormComponent implements OnInit {
   }
 
   public changeCoin(coin: Coin){
+    this.loading = true;
       this.exchangeService.getExchangesFromCoin(coin.id).subscribe(exchanges => {
         this.exchanges = exchanges;
         this.asset.exchange = this.exchanges[0];
+        this.loading = false;
       });
   }
 

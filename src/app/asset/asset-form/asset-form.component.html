@@ -17,8 +17,9 @@
     </select>
     </div>
     <div class="two columns">
-      <label>Add new asset</label>
-      <input class="button-primary" type="Submit" value="Submit">
+      <label><br /></label>
+      <button class="button-disabled" disabled type="Submit" *ngIf="loading"><i class="fa fa-spinner fa-spin"></i> Loading</button>
+      <button class="button-primary" type="Submit" *ngIf="!loading"><i class="fa fa-check"></i> Submit</button>
     </div>
   </div>
 </form>

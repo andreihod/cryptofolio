@@ -20,6 +20,12 @@
   border-color: #4cae4c !important;
 }
 
+.button-disabled{
+  color: #666666 !important;
+  background-color: #cccccc !important;
+  border-color: #999999 !important;
+}
+
 .button-danger{
   color: #fff !important;
   background-color: #c9302c !important;
