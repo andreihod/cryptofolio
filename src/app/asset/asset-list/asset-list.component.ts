@@ -25,10 +25,10 @@ export class AssetListComponent implements OnInit {
   ngOnInit() {
     this.assets = this.assetService.getAssets();
     this.coinService.getCoins().subscribe(result => {
-      this.coins = result
+      this.coins = result;
     });
     this.exchangeService.getExchanges().subscribe(result => {
-      this.exchanges = result
+      this.exchanges = result;
     });
   }
 

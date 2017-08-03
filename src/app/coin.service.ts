@@ -1,3 +1,4 @@
+import { Exchange } from './exchange';
 import { Coin } from './coin';
 import { environment } from './../environments/environment';
 import { Http, Headers } from '@angular/http';
@@ -22,7 +23,6 @@ export class CoinService {
       { headers: this.getHeaders() }
     ).map(res => res.json())
   }
-
 
   private getHeaders() {
     let headers = new Headers();

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="three columns">
       <label for="assetInput">Coin</label>
-      <select [(ngModel)]="asset.coin" name="coin" class="u-full-width" id="assetInput">
+      <select [(ngModel)]="asset.coin" (change)="changeCoin(asset.coin)" name="coin" class="u-full-width" id="assetInput">
         <option *ngFor="let coin of coins" [ngValue]="coin" >{{coin.getDisplayName()}}</option>
       </select>
     </div>
