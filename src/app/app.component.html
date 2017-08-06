@@ -1,14 +1,18 @@
-<h1>
-  <img src="assets/images/assts.png" alt="assts" /> {{title}}
-</h1>
-<p>
-  {{description}}
-</p>
+<div class="row">
+  <div class="six columns">
+    <h1>
+      <img src="assets/images/assts.png" alt="assts" /> {{title}}
+    </h1>
+    <p>
+      {{description}}
+    </p>
+  </div>
+  <div class="six columns text-right">
+    <app-authentication></app-authentication>
+  </div>
+</div>
 
-<span>Me: {{ myUsername }}</span>
-<br />
-<button (click)="getMe()">GetMe</button>
-<button (click)="logout()" class="button-danger">Logout</button>
+
 <div class="twelve columns text-center">
   <router-outlet></router-outlet>
 </div>

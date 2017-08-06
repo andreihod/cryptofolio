@@ -1,6 +1,6 @@
 import { AuthenticationService } from './authentication.service';
-import { UserService } from './user.service';
-import { User } from './user';
+import { UserService } from './user/user.service';
+import { User } from './user/user';
 import { Component } from '@angular/core';
 
 @Component({
@@ -10,21 +10,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  myUsername: string;
   title = 'assts';
   description = 'A free and open source digital asset tracker.';
 
-  constructor(private userService: UserService, private authenticationService: AuthenticationService) { }
-
-  getMe() {
-    this.userService.get().subscribe(
-      result => this.myUsername = result.json().user.username
-    )
-  }
-
-  logout() {
-    this.authenticationService.logout();
-    this.myUsername = null;
-  }
 
 }

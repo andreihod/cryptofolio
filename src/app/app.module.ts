@@ -1,6 +1,7 @@
+import { GlobalEventsManager } from './global-events-manager.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './authentication.service';
-import { UserService } from './user.service';
+import { UserService } from './user/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -14,9 +15,10 @@ import { AssetService } from './asset.service';
 import { CoinService } from './coin.service';
 import { ExchangeService } from './exchange.service';
 import { routing } from './app.routing';
-import { UserSignupComponent } from './user-signup/user-signup.component';
-import { UserLoginComponent } from './user-login/user-login.component';
+import { UserSignupComponent } from './user/user-signup/user-signup.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
 import { AssetComponent } from './asset/asset.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import { AssetComponent } from './asset/asset.component';
     AssetFormComponent,
     UserSignupComponent,
     UserLoginComponent,
-    AssetComponent
+    AssetComponent,
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { AssetComponent } from './asset/asset.component';
     HttpModule,
     routing
   ],
-  providers: [AssetService, CoinService, ExchangeService, UserService, AuthenticationService, AuthGuard],
+  providers: [AssetService, CoinService, ExchangeService, UserService, AuthenticationService, AuthGuard, GlobalEventsManager],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

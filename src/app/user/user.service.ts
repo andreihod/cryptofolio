@@ -1,8 +1,8 @@
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from './../authentication.service';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { User } from './user';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
@@ -20,7 +20,7 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  
+
 
   update(user: User) {
     return this.http.put(`${environment.apiUrl}/users/me`,

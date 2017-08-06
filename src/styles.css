@@ -7,6 +7,10 @@
   text-align: center;
 }
 
+.text-right{
+  text-align: right;
+}
+
 .text-error{
   color: #ac2925;
 }
