@@ -1,5 +1,3 @@
 <div *ngIf="showNavBar">
-  <span>Welcome {{ myUsername }}!</span>
-  <br />
-  <button (click)="logout()" class="button-danger">Logout</button>
+  <span>Welcome {{ myUsername }}! <a (click)="logout()" href="">Logout</a></span>
 </div>
