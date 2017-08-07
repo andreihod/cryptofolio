@@ -1,21 +1,23 @@
-import { OnInit } from "@angular/core";
-import { GlobalEventsManager } from "./../global-events-manager.service";
-import { AuthenticationService } from "./../authentication.service";
-import { UserService } from "./../user/user.service";
-import { Component } from "@angular/core";
+import { OnInit } from '@angular/core';
+import { UserService } from './../user/user.service';
+import { Component } from '@angular/core';
+
+import { GlobalEventsManager } from './../global-events-manager.service';
+import { AuthenticationService } from './../authentication.service';
 
 @Component({
-  selector: "app-authentication",
-  templateUrl: "./authentication.component.html",
-  styleUrls: ["./authentication.component.css"]
+  selector: 'app-authentication',
+  templateUrl: './authentication.component.html',
+  styleUrls: ['./authentication.component.css']
 })
+
 export class AuthenticationComponent implements OnInit {
   myUsername: string;
+  showNavBar = false;
+
   ngOnInit() {
     this.getMe();
   }
-
-  showNavBar: boolean = false;
 
   constructor(
     private userService: UserService,
