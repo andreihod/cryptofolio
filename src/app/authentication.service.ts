@@ -16,7 +16,7 @@ export class AuthenticationService {
     private router: Router,
     private globalEventsManager: GlobalEventsManager
   ) {
-    this.jwt = localStorage.getItem("jwt");
+    this.jwt = sessionStorage.getItem("jwt");
   }
 
   login(usernameEmail: string, password: string): Observable<boolean> {
@@ -35,7 +35,7 @@ export class AuthenticationService {
         let jwt = res.json().jwt;
         if (jwt) {
           this.jwt = jwt;
-          localStorage.setItem("jwt", this.jwt);
+          sessionStorage.setItem("jwt", this.jwt);
           this.globalEventsManager.showNavBar(true);
           this.router.navigate(["/assets"]);
           return true;
@@ -50,7 +50,7 @@ export class AuthenticationService {
 
   logout(): void {
     this.jwt = null;
-    localStorage.removeItem("jwt");
+    sessionStorage.removeItem("jwt");
     this.globalEventsManager.showNavBar(false);
     this.router.navigate(["/"]);
   }
