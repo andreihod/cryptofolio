@@ -1,16 +1,15 @@
-import { OnInit } from '@angular/core';
-import { UserService } from './../user/user.service';
-import { Component } from '@angular/core';
+import { OnInit } from "@angular/core";
+import { UserService } from "./../user/user.service";
+import { Component } from "@angular/core";
 
-import { GlobalEventsManager } from './../global-events-manager.service';
-import { AuthenticationService } from './../authentication.service';
+import { GlobalEventsManager } from "./../global-events-manager.service";
+import { AuthenticationService } from "./../authentication.service";
 
 @Component({
-  selector: 'app-authentication',
-  templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.css']
+  selector: "app-authentication",
+  templateUrl: "./authentication.component.html",
+  styleUrls: ["./authentication.component.css"]
 })
-
 export class AuthenticationComponent implements OnInit {
   myUsername: string;
   showNavBar = false;
@@ -39,9 +38,11 @@ export class AuthenticationComponent implements OnInit {
   }
 
   getMe() {
-    this.userService
-      .get()
-      .subscribe(result => (this.myUsername = result.json().user.username));
+    if (this.authenticationService.isUsuarioAutenticado()) {
+      this.userService
+        .get()
+        .subscribe(result => (this.myUsername = result.json().user.username));
+    }
   }
 
   logout() {
