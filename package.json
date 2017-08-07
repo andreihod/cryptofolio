@@ -1,6 +1,6 @@
 {
-  "name": "assts",
-  "version": "0.0.0",
+  "name": "cryptofolio",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

@@ -10,8 +10,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  title = 'CryptoFolio';
-  description = 'A free and open source digital asset tracker.';
-
+  title = 'cryptofolio';
 
 }
