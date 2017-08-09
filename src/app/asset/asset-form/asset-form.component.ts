@@ -24,6 +24,7 @@ export class AssetFormComponent implements OnInit {
   ) {}
 
   addAsset(f): void {
+    
     this.assetService.addAsset(this.asset);
     this.resetForm();
   }
@@ -37,6 +38,7 @@ export class AssetFormComponent implements OnInit {
       this.coins = coins;
       this.changeCoin(coins[0]);
       this.asset.coin = this.coins[0];
+      this.asset.coin_id = this.coins[0].id;
     });
   }
 
@@ -45,6 +47,7 @@ export class AssetFormComponent implements OnInit {
       this.exchangeService.getExchangesFromCoin(coin.id).subscribe(exchanges => {
         this.exchanges = exchanges;
         this.asset.exchange = this.exchanges[0];
+        this.asset.exchange_id = this.exchanges[0].id;
         this.loading = false;
       });
   }
