@@ -30,7 +30,6 @@ export class AssetService {
           return Asset.fromJson(a.asset);
         });
       })
-    //.map(this.extractData);
   }
 
 

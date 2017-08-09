@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AssetListComponent } from './asset-list/asset-list.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-asset',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssetComponent implements OnInit {
 
+  @ViewChild(AssetListComponent) assetlist: AssetListComponent;
+
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  assetAdded(){
+    this.assetlist.getAssets();
+  }
 }

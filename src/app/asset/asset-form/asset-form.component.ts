@@ -4,14 +4,18 @@ import { AssetService } from "./../../asset.service";
 import { Exchange } from "./../../exchange";
 import { Asset } from "./../../asset";
 import { Coin } from "./../../coin";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: 'app-asset-form',
   templateUrl: './asset-form.component.html',
   styleUrls: ['./asset-form.component.css']
 })
+
 export class AssetFormComponent implements OnInit {
+
+  @Output() assetAdded = new EventEmitter();
+
   public asset = new Asset();
   public coins: Coin[];
   public exchanges: Exchange[];
@@ -23,9 +27,10 @@ export class AssetFormComponent implements OnInit {
     private coinService: CoinService
   ) {}
 
-  addAsset(f): void {
-    
-    this.assetService.addAsset(this.asset);
+  addAsset(f): void {    
+    this.assetService.addAsset(this.asset).subscribe(
+      ret => { this.assetAdded.emit() }
+    );
     this.resetForm();
   }
 

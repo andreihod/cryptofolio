@@ -23,9 +23,8 @@ export class AssetListComponent implements OnInit {
     private exchangeService: ExchangeService) { }
 
   ngOnInit() {
-    this.assetService.getAssets().subscribe(result => {
-      this.assets = result;
-    });
+
+    this.getAssets();
 
     this.coinService.getCoins().subscribe(result => {
       this.coins = result;
@@ -37,6 +36,11 @@ export class AssetListComponent implements OnInit {
 
   }
 
+  public getAssets(){
+    this.assetService.getAssets().subscribe(result => {
+      this.assets = result;
+    });
+  }
   public changeCoin(coin: Coin){
       this.exchangeService.getExchangesFromCoin(coin.id).subscribe(exchanges => {
         this.exchanges = exchanges;
