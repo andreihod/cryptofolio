@@ -2,13 +2,14 @@ import { Coin } from './coin';
 import { Exchange } from './exchange'
 
 export class Asset {
-  public coin: Coin; 
-  public mybalance: number; 
+  public id: number;
+  public coin: Coin;
+  public mybalance: number;
   public exchange: Exchange
 
   public exchange_id: number;
   public coin_id: number;
-  
+
   constructor() { }
 
   public static fromJson(json: string){

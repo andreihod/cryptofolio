@@ -1,18 +1,20 @@
-import { Coin } from './coin';
-import { environment } from './../environments/environment.prod';
-import { Observable } from 'rxjs/Observable';
-import { AuthenticationService } from './authentication.service';
-import { Http, Headers } from '@angular/http';
-import { Injectable } from '@angular/core';
+import { Coin } from "./coin";
+import { environment } from "./../environments/environment.prod";
+import { Observable } from "rxjs/Observable";
+import { AuthenticationService } from "./authentication.service";
+import { Http, Headers } from "@angular/http";
+import { Injectable } from "@angular/core";
 
-import { Asset } from './asset';
+import { Asset } from "./asset";
 
 @Injectable()
 export class AssetService {
-
   public assets: Asset[];
 
-  constructor(private http: Http, private authenticationService: AuthenticationService) { }
+  constructor(
+    private http: Http,
+    private authenticationService: AuthenticationService
+  ) {}
 
   //constructor() {
   // this.assets = new Array<Asset>();
@@ -23,33 +25,43 @@ export class AssetService {
   //}
 
   getAssets(): Observable<Asset[]> {
-    return this.http.get(`${environment.apiUrl}/assets`
-      , { headers: this.getHeaders() })
+    return this.http
+      .get(`${environment.apiUrl}/assets`, { headers: this.getHeaders() })
       .map(res => {
-        return res.json().map((a) => {
+        return res.json().map(a => {
           return Asset.fromJson(a.asset);
         });
-      })
+      });
   }
 
-
   addAsset(asset: Asset): Observable<Asset> {
-    return this.http.post(`${environment.apiUrl}/assets`,
-      JSON.stringify({ asset })
-      , { headers: this.getHeaders() })
-      .map(res => { return res.json() })
+    return this.http
+      .post(`${environment.apiUrl}/assets`, JSON.stringify({ asset }), {
+        headers: this.getHeaders()
+      })
+      .map(res => {
+        return res.json();
+      })
       .catch(this.handleError);
   }
 
-
+  update(asset: Asset): Observable<Asset> {
+    return this.http
+      .put(`${environment.apiUrl}/assets/${asset.id}`, JSON.stringify({ asset }), {
+        headers: this.getHeaders()
+      })
+      .map(res => {
+        return res.json();
+      })
+      .catch(this.handleError);
+  }
 
   removeAsset(asset: Asset) {
-    let index: number = this.assets.indexOf(asset);
-    if (index !== -1) {
-      this.assets.splice(index, 1);
-    }
+    return this.http.delete(`${environment.apiUrl}/assets/${asset.id}`, {
+      headers: this.getHeaders()
+    });
   }
-  /** 
+  /**
     signup(user: User): Observable<User> {
       return this.http.post(`${environment.apiUrl}/auth/signup`,
         JSON.stringify({ user })
@@ -57,15 +69,15 @@ export class AssetService {
         .map(res => { return res.json() })
         .catch(this.handleError);
     }
-  
-  
-  
+
+
+
     update(user: User) {
       return this.http.put(`${environment.apiUrl}/users/me`,
         JSON.stringify({ user })
         , { headers: this.getHeaders() });
     }
-  
+
     get() {
       return this.http.get(`${environment.apiUrl}/users/me`
         , { headers: this.getHeaders() });
@@ -73,8 +85,8 @@ export class AssetService {
   */
   private getHeaders() {
     let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', `Bearer ${this.authenticationService.jwt}`);
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", `Bearer ${this.authenticationService.jwt}`);
     return headers;
   }
 
@@ -84,11 +96,10 @@ export class AssetService {
   }
 
   private extractData(res: Response | any) {
-    let assets = res.json().map((a) => {
+    let assets = res.json().map(a => {
       return Asset.fromJson(a.asset);
     });
 
     return assets;
   }
-
 }

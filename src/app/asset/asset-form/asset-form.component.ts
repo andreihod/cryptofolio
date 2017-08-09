@@ -27,7 +27,7 @@ export class AssetFormComponent implements OnInit {
     private coinService: CoinService
   ) {}
 
-  addAsset(f): void {    
+  addAsset(f): void {
     this.assetService.addAsset(this.asset).subscribe(
       ret => { this.assetAdded.emit() }
     );
