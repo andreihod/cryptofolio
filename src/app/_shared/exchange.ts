@@ -1,4 +1,4 @@
-import { Market } from './market'
+import { Market } from './market';
 
 export class Exchange {
 

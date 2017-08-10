@@ -1,9 +1,9 @@
-import { Http, Headers } from "@angular/http";
-import { Injectable } from "@angular/core";
-import { Exchange } from "./exchange";
-import { Market } from "./market";
+import { environment } from './../../environments/environment.prod';
+import { Http, Headers } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Exchange } from './exchange';
+import { Market } from './market';
 
-import { environment } from "./../environments/environment";
 
 @Injectable()
 export class ExchangeService {

@@ -1,10 +1,13 @@
-import { ExchangeService } from './../../exchange.service';
-import { CoinService } from './../../coin.service';
-import { AssetService } from './../../asset.service';
-import { Exchange } from './../../exchange';
-import { Asset } from './../../asset';
-import { Coin } from './../../coin';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
+import { Exchange } from './../../_shared/exchange';
+import { Asset } from './../asset';
+import { Coin } from './../../_shared/coin';
+
+import { ExchangeService } from './../../_shared/exchange.service';
+import { AssetService } from './../asset.service';
+import { CoinService } from './../../_shared/coin.service';
+
 
 @Component({
   selector: 'app-asset-list',
@@ -41,6 +44,7 @@ export class AssetListComponent implements OnInit {
       this.assets = result;
     });
   }
+
   public changeCoin(coin: Coin){
       this.exchangeService.getExchangesFromCoin(coin.id).subscribe(exchanges => {
         this.exchanges = exchanges;
@@ -49,7 +53,9 @@ export class AssetListComponent implements OnInit {
   }
 
   removeAsset(asset: Asset): void {
-    this.assetService.removeAsset(asset);
+    this.assetService.removeAsset(asset).subscribe(
+      res => { this.getAssets()}
+    );
   }
 
   // TODO: Clean this code
@@ -61,8 +67,10 @@ export class AssetListComponent implements OnInit {
 
   }
 
-  saveAsset(myAsset: Asset): void {
-    this.editingAsset = null;
+   saveAsset(asset: Asset): void {
+    this.assetService.update(asset).subscribe(
+      ret => { this.getAssets() }
+    );
   }
 
   compareExchange(exchange1: Exchange, exchange2: Exchange) {

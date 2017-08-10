@@ -1,16 +1,18 @@
-import { AuthenticationService } from './../authentication.service';
+import { AuthenticationService } from './../authentication/authentication.service';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map';
-import { User } from './user';
-import { environment } from '../../environments/environment';
-
 import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
+
+import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
+
+import { User } from './user';
+
 
 @Injectable()
 export class UserService {
 
-  constructor(private http: Http, private authenticationService : AuthenticationService) { }
+  constructor(private http: Http, private authenticationService: AuthenticationService) { }
 
   signup(user: User): Observable<User> {
     return this.http.post(`${environment.apiUrl}/auth/signup`,

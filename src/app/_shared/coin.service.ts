@@ -1,6 +1,6 @@
+import { environment } from './../../environments/environment.prod';
 import { Exchange } from './exchange';
 import { Coin } from './coin';
-import { environment } from './../environments/environment';
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 

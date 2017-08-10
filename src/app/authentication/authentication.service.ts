@@ -1,11 +1,12 @@
-import { GlobalEventsManager } from "./global-events-manager.service";
 import { Router } from "@angular/router";
-import { User } from "./user/user";
 import { Observable } from "rxjs";
 import { Http, Headers } from "@angular/http";
 import { Injectable } from "@angular/core";
 import "rxjs/add/operator/map";
-import { environment } from "../environments/environment";
+
+import { environment } from './../../environments/environment.prod';
+
+import { GlobalEventsManager } from './../_shared/global-events-manager.service';
 
 @Injectable()
 export class AuthenticationService {
