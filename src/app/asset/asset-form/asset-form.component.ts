@@ -31,7 +31,7 @@ export class AssetFormComponent implements OnInit {
 
   addAsset(f): void {
     this.assetService.addAsset(this.asset).subscribe(
-      ret => { this.assetAdded.emit() }
+      ret => {}
     );
     this.resetForm();
   }

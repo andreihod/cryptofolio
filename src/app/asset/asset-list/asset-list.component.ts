@@ -47,6 +47,7 @@ export class AssetListComponent implements OnInit {
   }
 
   public getAssets() {
+    console.log('consultou');
     this.assetService.getAssets().subscribe(result => {
       this.assets = result;
     });
@@ -60,9 +61,7 @@ export class AssetListComponent implements OnInit {
   }
 
   removeAsset(asset: Asset): void {
-    this.assetService.removeAsset(asset).subscribe(res => {
-      this.getAssets();
-    });
+    this.assetService.removeAsset(asset).subscribe(res => {});
   }
 
   // TODO: Clean this code
@@ -76,9 +75,9 @@ export class AssetListComponent implements OnInit {
   }
 
   saveAsset(asset: Asset): void {
+    this.editingAsset = null;
     this.assetService.update(asset).subscribe(ret => {
-      this.getAssets();
-      this.editingAsset = null;
+     // this.getAssets();
     });
   }
 

@@ -16,7 +16,4 @@ export class AssetComponent implements OnInit {
   ngOnInit() {
   }
 
-  assetAdded(){
-    this.assetlist.getAssets();
-  }
 }

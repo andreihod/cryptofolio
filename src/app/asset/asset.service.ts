@@ -2,11 +2,11 @@ import { Observable } from "rxjs/Observable";
 import { Http, Headers } from "@angular/http";
 import { Injectable } from "@angular/core";
 
-import { environment } from './../../environments/environment.prod';
+import { environment } from "./../../environments/environment.prod";
 
 import { Asset } from "./asset";
 
-import { AuthenticationService } from './../authentication/authentication.service';
+import { AuthenticationService } from "./../authentication/authentication.service";
 
 @Injectable()
 export class AssetService {
@@ -17,25 +17,23 @@ export class AssetService {
     private authenticationService: AuthenticationService
   ) {}
 
-  //constructor() {
-  // this.assets = new Array<Asset>();
-  // }
-
-  //addAsset(asset: Asset) {
-  //  this.assets.push(asset);
-  //}
 
   getAssets(): Observable<Asset[]> {
     return this.http
       .get(`${environment.apiUrl}/assets`, { headers: this.getHeaders() })
       .map(res => {
-        return res.json().map(a => {
+        const assetsReturn = res.json().map(a => {
           return Asset.fromJson(a.asset);
         });
+
+        this.assets = assetsReturn;
+        return assetsReturn;
       });
   }
 
   addAsset(asset: Asset): Observable<Asset> {
+    this.assets.push(asset);
+
     return this.http
       .post(`${environment.apiUrl}/assets`, JSON.stringify({ asset }), {
         headers: this.getHeaders()
@@ -48,9 +46,13 @@ export class AssetService {
 
   update(asset: Asset): Observable<Asset> {
     return this.http
-      .put(`${environment.apiUrl}/assets/${asset.id}`, JSON.stringify({ asset }), {
-        headers: this.getHeaders()
-      })
+      .put(
+        `${environment.apiUrl}/assets/${asset.id}`,
+        JSON.stringify({ asset }),
+        {
+          headers: this.getHeaders()
+        }
+      )
       .map(res => {
         return res.json();
       })
@@ -58,6 +60,11 @@ export class AssetService {
   }
 
   removeAsset(asset: Asset) {
+    let index: number = this.assets.indexOf(asset);
+    if (index !== -1) {
+      this.assets.splice(index, 1);
+    }
+
     return this.http.delete(`${environment.apiUrl}/assets/${asset.id}`, {
       headers: this.getHeaders()
     });
