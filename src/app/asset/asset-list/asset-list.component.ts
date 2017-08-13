@@ -77,15 +77,14 @@ export class AssetListComponent implements OnInit {
   saveAsset(asset: Asset): void {
     this.editingAsset = null;
     this.assetService.update(asset).subscribe(ret => {
-     // this.getAssets();
     });
   }
 
   compareExchange(exchange1: Exchange, exchange2: Exchange) {
-    return exchange1 && exchange2 && exchange1.id == exchange2.id;
+    return exchange1 && exchange2 && exchange1.id === exchange2.id;
   }
 
   compareCoin(coin1: Coin, coin2: Coin) {
-    return coin1 && coin2 && coin1.id == coin2.id;
+    return coin1 && coin2 && coin1.id === coin2.id;
   }
 }

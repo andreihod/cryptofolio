@@ -1,6 +1,7 @@
 <table class="u-full-width">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Asset</th>
       <th>My Balance</th>
       <th>Exchange - Market</th>
@@ -12,6 +13,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let asset of assets" [ngClass]="{'editing': asset==editingAsset}">
+      <td>
+        <span>{{asset.id}}</span>
+      </td>
       <td>
         <select [compareWith]="compareCoin" (change)="changeCoin(editingAsset.coin)" *ngIf="asset==editingAsset" [(ngModel)]="asset.coin">
           <option *ngFor="let coin of coins" [ngValue]="coin" >{{coin.name}} - {{coin.symbol}}</option>
