@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, EventEmitter, ViewChildren, ChangeDetectorRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  ChangeDetectorRef
+} from "@angular/core";
 
 import { Exchange } from "./../../_shared/exchange";
 import { Asset } from "./../asset";
@@ -8,8 +14,7 @@ import { ExchangeService } from "./../../_shared/exchange.service";
 import { AssetService } from "./../asset.service";
 import { CoinService } from "./../../_shared/coin.service";
 
-import {Observable} from 'rxjs/Rx';
-
+import { Observable } from "rxjs/Rx";
 
 @Component({
   selector: "app-asset-list",
@@ -29,7 +34,6 @@ export class AssetListComponent implements OnInit {
     private ref: ChangeDetectorRef
   ) {}
 
-  @ViewChildren('formRow') formRow;
 
   ngOnInit() {
     this.getAssets();
@@ -43,7 +47,7 @@ export class AssetListComponent implements OnInit {
     });
 
     Observable.interval(10000).subscribe(x => {
-      if(!this.editingAsset){
+      if (!this.editingAsset) {
         this.getAssets();
       }
     });
@@ -66,21 +70,20 @@ export class AssetListComponent implements OnInit {
     this.assetService.removeAsset(asset).subscribe(res => {});
   }
 
-  editAsset(myAsset: Asset, index): void {
+  editAsset(myAsset: Asset, formRow): void {
     this.editingAsset = myAsset;
     this.exchangeService
       .getExchangesFromCoin(myAsset.coin.id)
       .subscribe(exchanges => {
         this.exchanges = exchanges;
       });
-      this.ref.detectChanges();
-    console.log(this.formRow.toArray()[index].nativeElement.children[2].children[0].focus());
+    this.ref.detectChanges();
+    formRow.children[2].children[0].focus();
   }
 
   saveAsset(asset: Asset): void {
     this.editingAsset = null;
-    this.assetService.update(asset).subscribe(ret => {
-    });
+    this.assetService.update(asset).subscribe(ret => {});
   }
 
   compareExchange(exchange1: Exchange, exchange2: Exchange) {
