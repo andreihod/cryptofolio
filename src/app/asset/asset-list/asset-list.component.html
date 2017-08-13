@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let asset of assets" [ngClass]="{'editing': asset==editingAsset}">
+    <tr #formRow *ngFor="let asset of assets; let i ='index'" [ngClass]="{'editing': asset==editingAsset}">
       <td>
         <span>{{asset.id}}</span>
       </td>
@@ -23,7 +23,7 @@
         <span *ngIf="asset!=editingAsset">{{asset.coin.getDisplayName()}}</span>
       </td>
       <td>
-        <input *ngIf="asset==editingAsset" type="text" [(ngModel)]="asset.mybalance" class="u-full-width" />
+        <input *ngIf="asset==editingAsset" type="text" [(ngModel)]="asset.mybalance" class="u-full-width" (keyup.enter)="saveAsset(asset)" />
         <span *ngIf="asset!=editingAsset">{{asset.mybalance}}</span>
       </td>
       <td>
@@ -37,7 +37,7 @@
       <td>${{ asset.mybalance * asset.exchange.price | number : '1.2' }} </td>
       <td>+12%</td>
       <td class="text-center">
-        <a *ngIf="asset!=editingAsset" class="button button-icon" (click)="editAsset(asset)"><i class="fa fa-pencil"></i></a>
+        <a *ngIf="asset!=editingAsset" class="button button-icon" (click)="editAsset(asset,i)"><i class="fa fa-pencil"></i></a>
         <a *ngIf="asset!=editingAsset" class="button button-icon" (click)="removeAsset(asset)"><i class="fa fa-remove"></i></a>
         <a *ngIf="asset==editingAsset" class="button button-icon" (click)="saveAsset(asset)"><i class="fa fa-check"></i></a>
       </td>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, ViewChildren, ChangeDetectorRef } from "@angular/core";
 
 import { Exchange } from "./../../_shared/exchange";
 import { Asset } from "./../asset";
@@ -25,8 +25,11 @@ export class AssetListComponent implements OnInit {
   constructor(
     private assetService: AssetService,
     private coinService: CoinService,
-    private exchangeService: ExchangeService
+    private exchangeService: ExchangeService,
+    private ref: ChangeDetectorRef
   ) {}
+
+  @ViewChildren('formRow') formRow;
 
   ngOnInit() {
     this.getAssets();
@@ -47,7 +50,6 @@ export class AssetListComponent implements OnInit {
   }
 
   public getAssets() {
-    console.log('consultou');
     this.assetService.getAssets().subscribe(result => {
       this.assets = result;
     });
@@ -64,14 +66,15 @@ export class AssetListComponent implements OnInit {
     this.assetService.removeAsset(asset).subscribe(res => {});
   }
 
-  // TODO: Clean this code
-  editAsset(myAsset: Asset): void {
+  editAsset(myAsset: Asset, index): void {
     this.editingAsset = myAsset;
     this.exchangeService
       .getExchangesFromCoin(myAsset.coin.id)
       .subscribe(exchanges => {
         this.exchanges = exchanges;
       });
+      this.ref.detectChanges();
+    console.log(this.formRow.toArray()[index].nativeElement.children[2].children[0].focus());
   }
 
   saveAsset(asset: Asset): void {
