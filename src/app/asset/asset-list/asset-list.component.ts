@@ -1,32 +1,34 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 
-import { Exchange } from './../../_shared/exchange';
-import { Asset } from './../asset';
-import { Coin } from './../../_shared/coin';
+import { Exchange } from "./../../_shared/exchange";
+import { Asset } from "./../asset";
+import { Coin } from "./../../_shared/coin";
 
-import { ExchangeService } from './../../_shared/exchange.service';
-import { AssetService } from './../asset.service';
-import { CoinService } from './../../_shared/coin.service';
+import { ExchangeService } from "./../../_shared/exchange.service";
+import { AssetService } from "./../asset.service";
+import { CoinService } from "./../../_shared/coin.service";
+
+import {Observable} from 'rxjs/Rx';
 
 
 @Component({
-  selector: 'app-asset-list',
-  templateUrl: './asset-list.component.html',
-  styleUrls: ['./asset-list.component.css']
+  selector: "app-asset-list",
+  templateUrl: "./asset-list.component.html",
+  styleUrls: ["./asset-list.component.css"]
 })
 export class AssetListComponent implements OnInit {
-
   public assets: Asset[];
   public editingAsset: Asset;
   public coins: Coin[];
   public exchanges: Exchange[];
 
-  constructor(private assetService: AssetService,
+  constructor(
+    private assetService: AssetService,
     private coinService: CoinService,
-    private exchangeService: ExchangeService) { }
+    private exchangeService: ExchangeService
+  ) {}
 
   ngOnInit() {
-
     this.getAssets();
 
     this.coinService.getCoins().subscribe(result => {
@@ -37,47 +39,54 @@ export class AssetListComponent implements OnInit {
       this.exchanges = result;
     });
 
+    Observable.interval(10000).subscribe(x => {
+      if(!this.editingAsset){
+        this.getAssets();
+      }
+    });
   }
 
-  public getAssets(){
+  public getAssets() {
     this.assetService.getAssets().subscribe(result => {
       this.assets = result;
     });
   }
 
-  public changeCoin(coin: Coin){
-      this.exchangeService.getExchangesFromCoin(coin.id).subscribe(exchanges => {
-        this.exchanges = exchanges;
-        this.editingAsset.exchange = exchanges[0];
-      });
+  public changeCoin(coin: Coin) {
+    this.exchangeService.getExchangesFromCoin(coin.id).subscribe(exchanges => {
+      this.exchanges = exchanges;
+      this.editingAsset.exchange = exchanges[0];
+    });
   }
 
   removeAsset(asset: Asset): void {
-    this.assetService.removeAsset(asset).subscribe(
-      res => { this.getAssets()}
-    );
+    this.assetService.removeAsset(asset).subscribe(res => {
+      this.getAssets();
+    });
   }
 
   // TODO: Clean this code
   editAsset(myAsset: Asset): void {
     this.editingAsset = myAsset;
-     this.exchangeService.getExchangesFromCoin(myAsset.coin.id).subscribe(exchanges => {
+    this.exchangeService
+      .getExchangesFromCoin(myAsset.coin.id)
+      .subscribe(exchanges => {
         this.exchanges = exchanges;
       });
-
   }
 
-   saveAsset(asset: Asset): void {
-    this.assetService.update(asset).subscribe(
-      ret => { this.getAssets() }
-    );
+  saveAsset(asset: Asset): void {
+    this.assetService.update(asset).subscribe(ret => {
+      this.getAssets();
+      this.editingAsset = null;
+    });
   }
 
   compareExchange(exchange1: Exchange, exchange2: Exchange) {
-    return (exchange1 && exchange2 && exchange1.id == exchange2.id);
+    return exchange1 && exchange2 && exchange1.id == exchange2.id;
   }
 
-  compareCoin(coin1: Coin, coin2: Coin){
-    return (coin1 && coin2 && coin1.id == coin2.id);
+  compareCoin(coin1: Coin, coin2: Coin) {
+    return coin1 && coin2 && coin1.id == coin2.id;
   }
 }
