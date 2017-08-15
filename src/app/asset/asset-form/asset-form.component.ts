@@ -16,8 +16,6 @@ import { CoinService } from './../../_shared/coin.service';
 
 export class AssetFormComponent implements OnInit {
 
-  @Output() assetAdded = new EventEmitter();
-
   public asset = new Asset();
   public coins: Coin[];
   public exchanges: Exchange[];
